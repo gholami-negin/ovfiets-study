@@ -393,7 +393,7 @@ elif st.session_state.step == "done":
         for k in list(st.session_state.keys()):
             del st.session_state[k]
         st.rerun()
-        if os.path.exists("responses.csv"):
+    if os.path.exists("responses.csv"):
     with open("responses.csv", "rb") as f:
         st.download_button(
             "⬇ Download responses",
