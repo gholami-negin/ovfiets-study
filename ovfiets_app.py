@@ -388,15 +388,19 @@ elif st.session_state.step == "done":
     st.markdown(f"<h2 style='color:{DARK}'>🎉 Thank you!</h2>", unsafe_allow_html=True)
     st.success("Your responses have been saved.")
     st.markdown("Your input helps improve how OV-fiets communicates bike availability to users.")
+    st.caption("University design research project — Block C, 2026. No personal data stored.")
     st.markdown("---")
+
+    # ✅ DOWNLOAD BUTTON (correct indentation)
+    if os.path.exists("responses.csv"):
+        with open("responses.csv", "rb") as f:
+            st.download_button(
+                "⬇ Download responses",
+                f,
+                file_name="responses.csv"
+            )
+
     if st.button("↩ Start new participant session", use_container_width=True):
         for k in list(st.session_state.keys()):
             del st.session_state[k]
         st.rerun()
-    if os.path.exists("responses.csv"):
-    with open("responses.csv", "rb") as f:
-        st.download_button(
-            "⬇ Download responses",
-            f,
-            file_name="responses.csv"
-        )
